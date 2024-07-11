@@ -4,7 +4,7 @@ export type Store<State> = {
   subscribe: (callback: () => void) => void;
 };
 
-export function createModuleStore<State>(initialState: State): Store<State> {
+export function createStore<State>(initialState: State): Store<State> {
   let state = initialState;
 
   const listeners = new Set<() => void>();
