@@ -1,7 +1,8 @@
 export type Store<State> = {
+  clearStore: () => void;
   getState: () => State;
   setState: (newState: State | ((newState: State) => State)) => void;
-  subscribe: (callback: () => void) => void;
+  subscribe: (callback: () => void) => () => void;
 };
 
 export function createStore<State>(initialState: State): Store<State> {
@@ -21,6 +22,9 @@ export function createStore<State>(initialState: State): Store<State> {
     listeners.forEach((listener) => listener());
   };
 
+  const clearStore = () => {
+    listeners.clear();
+  };
   const subscribe: Store<State>["subscribe"] = (callback) => {
     listeners.add(callback);
 
@@ -30,6 +34,7 @@ export function createStore<State>(initialState: State): Store<State> {
   };
 
   return {
+    clearStore,
     getState,
     setState,
     subscribe,

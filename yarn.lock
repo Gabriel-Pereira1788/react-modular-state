@@ -569,6 +569,11 @@
     "@types/prop-types" "*"
     csstype "^3.0.2"
 
+"@types/use-subscription@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/use-subscription/-/use-subscription-1.0.2.tgz#cab718dec61dd3a34d67d4176bc2f8d7dbc9ce83"
+  integrity sha512-k6CBZX+wR2Ad6/dIrznyyf8foRNVIvMvbwC/aKE2SZ691OpuNfqUkixMCD+e0dH/iEOHlvVZbg7TuRBdraBeEQ==
+
 "@typescript-eslint/eslint-plugin@^7.13.1":
   version "7.15.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-7.15.0.tgz#8eaf396ac2992d2b8f874b68eb3fcd6b179cb7f3"
@@ -1615,6 +1620,18 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+use-subscription@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.8.2.tgz#d14ba39593164bbfddc7a3fed7216062b42375c8"
+  integrity sha512-yC2ShScvQ1lAGRp5Y6pz1MqBIU81REfJ/sQIe16BCgKK9mRlZCnU90uY0alKsN6e/Next0vXTsvH3HbAfdH68w==
+  dependencies:
+    use-sync-external-store "^1.2.2"
+
+use-sync-external-store@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.2.tgz#c3b6390f3a30eba13200d2302dcdf1e7b57b2ef9"
+  integrity sha512-PElTlVMwpblvbNqQ82d2n6RjStvdSoNe9FG28kNfz3WiXilJm4DdNkEzRhCZuIDwY8U08WVihhGR5iRqAwfDiw==
 
 vite@^5.3.1:
   version "5.3.3"

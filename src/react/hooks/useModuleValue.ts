@@ -1,30 +1,21 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useReducer } from "react";
+import { useMemo } from "react";
 import { Store } from "../../vanilla/createStore";
+import { useSubscription } from "use-subscription";
 
 export function useModuleValue<State, S>(
   store: Store<State>,
   selector: (state: State) => S
 ) {
-  const [currentValue, rerender] = useReducer((prev) => {
-    const newValue = selector(store.getState());
-
-    if (prev === newValue) {
-      return prev;
-    }
-
-    return newValue;
-  }, selector(store.getState()));
-
-  useEffect(() => {
-    const unsubscribe = store.subscribe(() => {
-      rerender();
-    });
-
-    return unsubscribe;
-  }, []);
-
-  return currentValue as S;
+  return useSubscription(
+    useMemo(
+      () => ({
+        getCurrentValue: () => selector(store.getState()),
+        subscribe: store.subscribe,
+      }),
+      [store, selector]
+    )
+  );
 }
 
 export function useModuleSetValue<
