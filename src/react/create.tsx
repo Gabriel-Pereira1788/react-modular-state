@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { createStore } from "../vanilla/createStore";
 import { createDispatch, createUseModuleState } from "../vanilla";
 import { Reducer } from "../types";
@@ -12,17 +11,8 @@ export function create<
 >(initialState: State, reducer?: Reducer<State, Payload, Type>) {
   const store = createStore(initialState);
 
-  const LifeCycleController = ({ children }: React.PropsWithChildren) => {
-    useEffect(() => {
-      return () => store.clearStore();
-    }, []);
-    return <>{children}</>;
-  };
-
-  const useModuleDispatch = () => {
-    return createDispatch(store, reducer!);
-  };
   const useModuleState = createUseModuleState(store);
 
-  return [LifeCycleController, useModuleState, useModuleDispatch] as const;
+  const useModuleDispatch = () => createDispatch(store, reducer);
+  return [store, useModuleState, useModuleDispatch] as const;
 }
