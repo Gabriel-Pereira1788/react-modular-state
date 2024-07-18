@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useModuleSetValue, useModuleValue } from "../react/hooks";
-import { Store } from "./createStore";
+import { Store } from "../types";
 
 export function createUseModuleState<State extends Record<string, any>>(
   store: Store<State>

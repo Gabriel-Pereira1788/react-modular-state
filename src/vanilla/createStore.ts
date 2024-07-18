@@ -1,20 +1,18 @@
-export type Store<State> = {
-  clearStore: () => void;
-  getState: () => State;
-  setState: (newState: State | ((newState: State) => State)) => void;
-  subscribe: (callback: () => void) => () => void;
-};
+import { Store } from "../types";
 
 export function createStore<State>(initialState: State): Store<State> {
-  let state = initialState;
+  let state: State | null = initialState;
 
   const listeners = new Set<() => void>();
 
-  const getState = () => state;
+  const getState = () => {
+    if (!state) throw new Error("State is null.");
+    return state;
+  };
   const setState: Store<State>["setState"] = (nextState) => {
     const newState =
       typeof nextState === "function"
-        ? (nextState as (newState: State) => State)(state)
+        ? (nextState as (newState: State) => State)(state!)
         : nextState;
 
     state = newState;
@@ -22,8 +20,9 @@ export function createStore<State>(initialState: State): Store<State> {
     listeners.forEach((listener) => listener());
   };
 
-  const clearStore = () => {
+  const closeStore = () => {
     listeners.clear();
+    state = initialState;
   };
   const subscribe: Store<State>["subscribe"] = (callback) => {
     listeners.add(callback);
@@ -34,7 +33,7 @@ export function createStore<State>(initialState: State): Store<State> {
   };
 
   return {
-    clearStore,
+    closeStore,
     getState,
     setState,
     subscribe,

@@ -1,5 +1,4 @@
-import { Store } from "./createStore";
-import { Action, Reducer } from "../types";
+import { Action, Reducer, Store } from "../types";
 
 export function createDispatch<State, Payload, Type>(
   store: Store<State>,

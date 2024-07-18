@@ -1,5 +1,5 @@
 export type Store<State> = {
-  clearStore: () => void;
+  closeStore: () => void;
   getState: () => State;
   setState: (newState: State | ((newState: State) => State)) => void;
   subscribe: (callback: () => void) => () => void;

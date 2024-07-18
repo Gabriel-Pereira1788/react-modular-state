@@ -1,21 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useMemo } from "react";
-import { Store } from "../../vanilla/createStore";
+// import { useMemo } from "react";
+
 import { useSubscription } from "use-subscription";
+import { Store } from "../../types";
 
 export function useModuleValue<State, S>(
   store: Store<State>,
   selector: (state: State) => S
 ) {
-  return useSubscription(
-    useMemo(
-      () => ({
-        getCurrentValue: () => selector(store.getState()),
-        subscribe: store.subscribe,
-      }),
-      [store, selector]
-    )
-  );
+  return useSubscription({
+    getCurrentValue: () => selector(store.getState()),
+    subscribe: store.subscribe,
+  });
 }
 
 export function useModuleSetValue<

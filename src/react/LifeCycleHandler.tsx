@@ -1,15 +1,18 @@
-import { useEffect } from "react";
-import { Store } from "../vanilla";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { memo, useEffect } from "react";
+import { Store } from "../types";
 
 type Props<State> = {
   store: Store<State>;
 };
-export const LifeCycleHandler = <State,>({
+function LifeCycleHandlerNoMemo({
   children,
   store,
-}: Props<State> & React.PropsWithChildren) => {
+}: Props<any> & React.PropsWithChildren) {
   useEffect(() => {
-    return () => store.clearStore();
+    return () => store.closeStore();
   }, []);
   return <>{children}</>;
-};
+}
+
+export const LifeCycleHandler = memo(LifeCycleHandlerNoMemo);
