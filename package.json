@@ -1,8 +1,10 @@
 {
   "name": "react-modular-state",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
+  "author": "Gabriel Andrade",
   "scripts": {
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "build": "yarn build:esm && yarn build:cjs",
@@ -16,6 +18,15 @@
     "@types/react": ">=17.0.0",
     "@types/use-subscription": "^1.0.2",
     "react": ">=17.0.0"
+  },
+  "files": [
+    "dist",
+    "License",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gabriel-Pereira1788/react-modular-state"
   },
   "devDependencies": {
     "react": ">=17.0.0",
