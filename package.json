@@ -1,8 +1,6 @@
 {
   "name": "react-modular-state",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
+  "version": "1.0.4",
   "license": "MIT",
   "author": "Gabriel Andrade",
   "scripts": {
@@ -14,6 +12,9 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
+  "dependencies": {
+    "use-subscription": "^1.8.2"
+  },
   "peerDependencies": {
     "@types/react": ">=17.0.0",
     "@types/use-subscription": "^1.0.2",
@@ -29,9 +30,6 @@
     "url": "git+https://github.com/Gabriel-Pereira1788/react-modular-state"
   },
   "devDependencies": {
-    "react": ">=17.0.0",
-    "use-subscription": "^1.8.2",
-    "react-dom": "^18.3.1",
     "@babel/cli": "^7.24.8",
     "@babel/core": "^7.24.9",
     "@babel/preset-env": "^7.24.8",
@@ -43,6 +41,10 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "typescript": "^5.2.2"
+    "react": ">=17.0.0",
+    "react-dom": "^18.3.1",
+    "tsup": "^8.1.2",
+    "typescript": "^5.2.2",
+    "use-subscription": "^1.8.2"
   }
 }

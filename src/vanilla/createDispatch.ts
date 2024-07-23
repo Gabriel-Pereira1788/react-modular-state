@@ -1,10 +1,10 @@
-import { Action, Reducer, Store } from "../types";
+import { Reducer, Store } from "../types";
 
-export function createDispatch<State, Payload, Type>(
+export function createDispatch<State, Action>(
   store: Store<State>,
-  reducer?: Reducer<State, Payload, Type>
+  reducer?: Reducer<State, Action>
 ) {
-  return (action: Action<Type, Payload>) => {
+  return (action: Action) => {
     if (!reducer) throw new Error("Reducer is not defined.");
     const prevState = store.getState();
     const newState = reducer(prevState, action);
